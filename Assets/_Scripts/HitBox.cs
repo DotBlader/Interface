@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class HitBox : MonoBehaviour
 {
-    public bool isTouching;
+    public bool isTouching; //bool för om man nuddar
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        isTouching = true;
+        isTouching = true; //sätter nuddar till sant om man kolliderar med nåt
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        isTouching = false;
+        isTouching = false; //sätter den till false
     }
 }

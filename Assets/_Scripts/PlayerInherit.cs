@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInherit : Player
+public class PlayerInherit : Player //ärver från spelar skriptet, gör exakt samma sak som det skriptet fast med en anna bool, kolla "Player" skriptet för kommentarer
 {
-    public bool interact2;
-    public GameObject Lock;
+    public bool interact2; //har en annan bool för om man interagerar med en låda
     public override void Update()
     {
-        base.Update(); 
-        if (interact2 == true && Input.GetKeyDown(KeyCode.E) && Lock == null)
+        base.Update(); //gör samma som spelar skriptet
+        if (interact2 == true && Input.GetKeyDown(KeyCode.E)) //gör också detta, samma som innan men med den andra boolen istället
         {
             opendrawer.Open();
+            playsound = false;
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -20,7 +20,10 @@ public class PlayerInherit : Player
         {
             interact = true;
             if (other.gameObject.GetComponent<OpenDrawer>() != null)
+            {
                 opendrawer = other.gameObject.GetComponent<OpenDrawer>();
+                playsound = true;
+            }
         }
         else if (other.gameObject.tag == "Interact2")
         {

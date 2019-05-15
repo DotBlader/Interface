@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement; //använder UI
 
 public class SceneChanger : MonoBehaviour
 {
-    public void SceneChange(string namn)
+    public void SceneChange(string namn) //funktion där scenen byts till den man specifierar
     {
-        SceneManager.LoadScene(namn);
+        SceneManager.LoadScene(namn); //laddar scenen
     }
-    public void QuitGame()
+    public void QuitGame() //funktion för att avsluta spelet
     {
-        Application.Quit();
+        Application.Quit(); //avslutar spelet
     }
 }

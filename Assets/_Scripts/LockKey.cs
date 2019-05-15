@@ -2,26 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LockKey : MonoBehaviour, IPickupable
+public class LockKey : MonoBehaviour, IPickupable //ärver från interfacet
 {
-    private bool pickedup;
-    public GameObject particlePickup;
-    public AudioSource AS;
+    private bool pickedup; //bool för om objektet kan tas upp
+    public GameObject particlePickup; //partikelsystem som spawnas
+    public OpenDrawer openDrawer; //accessar skriptet
+    public AudioSource AS; //audio source för när objektet tas upp
     void Update()
     {
-        if (pickedup)
+        if (pickedup) //om man kan ta upp objektet
         {
-            PickupObject();
+            PickupObject(); //kör funktionen där objektet tas upp
         }
     }
-    public void PickupObject()
+    public void PickupObject() //funktion som krävs av interface där objektet tas upp
     {
-        AS.Play();
-        Instantiate(particlePickup, transform.position, transform.rotation);
-        Destroy(gameObject);
+        AS.Play(); //spelar ljudet
+        Instantiate(particlePickup, transform.position, transform.rotation); //spawnar partikel systemet
+        Destroy(gameObject); //förstör objektet
     }
-    public void OnMouseDown()
+    public void OnMouseDown() //när man klickar på objektet
     {
-        pickedup = true;
+        if (openDrawer.opened) //om byrålådan är öppen
+        {
+            pickedup = true; //objektet kan tas upp
+        }
     }
 }
